@@ -10,3 +10,5 @@ A little C64 game in BASIC for Valentine's Day. Find all five hearts by sending 
 * [.d64 for Emulators](heart2find/heart2find.d64)
 * [.prg for Emulators](heart2find/heart2find.prg)
 * [.txt for copy/paste into VICE](heart2find/heart2find.txt)
+
+officially released at [BBC #19](https://demozoo.org/parties/5155/)
