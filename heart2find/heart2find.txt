@@ -1,0 +1,385 @@
+100 :
+101 rem \\\ heart to find \\\
+105 :
+106 rem setup
+110 clr:poke53280,4:poke53281,4:poke788,52
+111 printchr$(147)chr$(5)"starting.";
+112 gosub1000:print".";:rem blackbox
+113 gosub2000:print".";:rem effects
+114 gosub3000:print".";:rem graphics
+115 gosub7000:rem instructions
+120 :
+121 rem new game
+125 gosub200:rem init
+130 gosub300:rem screen layout
+135 :
+136 rem main loop
+140 t=t+1:rem new turn
+150 gosub400:rem user input
+160 poke55296+tp+t,0
+170 ifhf=athen5100:rem win
+180 ift=l+3*hfthen5200:rem lose
+195 goto140
+
+200 :
+201 rem sub init
+205 :
+210 printchr$(147)chr$(5)
+220 bp=1279:bc=55296+bp-1024:dc=3
+230 a=5:t=0:rf=0:g=0:hf=0:cx=1:cy=1
+235 fori=0tol+1:bb(i,0)=1:bb(i,l+1)=1:bb(0,i)=1:bb(l+1,i)=1:next
+240 forx=1tol:fory=1tol:bb(x,y)=0:next:next
+250 :
+251 rem place hearts
+260 fori=1toa
+270 x=rnd(0)*l+1:y=rnd(0)*l+1
+280 ifbb(x,y)=5then270
+290 bb(x,y)=5:next
+299 return
+
+300 :
+301 rem sub screen layout
+305 :
+306 rem draw border
+310 fori=0tol+1
+315 pokebp+i,bs(1)
+320 pokebp+(l+1)*40+l-i+1,bs(1)
+325 pokebp+i*40,bs(1)
+330 pokebp+(l-i+1)*40+l+1,bs(1)
+335 next
+340 :
+341 rem fill blackbox
+345 forx=1tol:fory=1tol
+350 pokebp+y*40+x,bs(1)-64
+360 next:next
+365 :
+366 rem draw timeline
+370 ta=l+3*(a-1):tp=int((40-ta)/2)-1
+375 fori=1tota:poke1024+i+tp,46
+380 poke55296+i+tp,1+(i>l):next
+385 fori=1toa:poke1022+tp+l+i*3,192:poke55294+tp+l+i*3,0:next
+390 :
+391 rem position cursor for ending
+395 fori=1to17:print:next:return
+399 return
+
+400 :
+401 rem sub user input
+405 :
+406 rem input reset and display
+410 u$="":d=0
+412 gosub550
+415 :
+416 rem input loop
+420 getu$:ifu$=""then420
+425 bx=cx<1orcx>l:by=cy<1orcy>l:u=asc(u$)
+430 ifu=17thengosub500:cy=cy+1+(cy>l)*(l+2)+(cy=landbx)*l:gosub550
+431 ifu=29thengosub500:cx=cx+1+(cx>l)*(l+2)+(cx=landby)*l:gosub550
+432 ifu=145thengosub500:cy=cy-1-(cy<1)*(l+2)-(cy=1andbx)*l:gosub550
+433 ifu=157thengosub500:cx=cx-1-(cx<1)*(l+2)-(cx=1andby)*l:gosub550
+435 ifu=13thengosub450:return
+440 ifu=81then5300:rem (q)uit
+441 ifu=3then5400:rem stop
+442 ifu=147then5500:rem heart
+449 goto420
+450 :
+451 rem action
+455 d=-(cy<1)-(cx>l)*2-(cy>l)*3-(cx<1)*4
+459 rem test ray
+460 ifd>0thengosub600:gosub700:goto499
+469 rem guess
+470 ifd=0andpeek(bp+cy*40+cx)=224thengosub800:goto499
+480 goto420
+499 return
+
+500 :
+501 rem sub delete cursor
+502 :
+505 bz=cx>0andcx<=landcy>0andcy<=l
+510 ifbzthenpokebp+cx+cy*40,peek(bp+cx+cy*40)-128:return
+515 ifcx<1thenpokebp+cy*40-1,32:return
+520 ifcy<1thenpokebp+cx-40,32:return
+525 ifcx>lthenpokebp+cy*40+l+2,32:return
+530 ifcy>lthenpokebp+cx+(l+2)*40,32:return
+549 return
+
+550 :
+551 rem sub display cursor
+552 :
+555 bz=cx>0andcx<=landcy>0andcy<=l
+560 ifbzthenpokebp+cx+cy*40,peek(bp+cx+cy*40)+128:return
+565 ifcx<1thenpokebp+cy*40-1,62:return
+570 ifcy<1thenpokebp+cx-40,31:return
+575 ifcx>lthenpokebp+cy*40+l+2,60:return
+580 ifcy>lthenpokebp+cx+(l+2)*40,30:return
+599 return
+
+600 :
+601 rem sub ray
+602 :
+605 rem ray init
+610 ox=cx:oy=cy:px=ox:py=oy
+615 sx=-(d=4)+(d=2):sy=-(d=1)+(d=3)
+620 :
+621 rem sub ray loop
+625 rm=bb(px+sx,py+sy)>4
+630 rl=bb(px+sx+sy,py+sy-sx)>4
+635 rr=bb(px+sx-sy,py+sx+sy)>4
+640 ra=-rl*1-rr*2-rm*4
+645 ifra=1thensm=sx:sx=-sy:sy=sm
+650 ifra=2thensm=sx:sx=sy:sy=-sm
+655 ifra=3thensx=-sx:sy=-sy
+660 :
+661 rem ray move
+665 ifra=0thenpx=px+sx:py=py+sy
+670 :
+671 rem check border/collision/reflect
+675 if(ra>3orpx=0orpy=0orpx=l+1orpy=l+1orbb(px,py)>0)then699
+680 goto620:rem move on
+699 return
+
+700 :
+701 rem sub result
+702 :
+710 ifra>3then750
+720 ifox=pxandoy=pythen760
+730 ifra=0 then770
+740 goto799
+750 :
+751 rem absorbed
+752 bb(ox,oy)=4
+753 pokebc+40*oy+ox,2
+754 f=4:gosub900
+759 goto790
+760 :
+761 rem reflected
+762 bb(ox,oy)=3
+763 pokebc+40*oy+ox,0
+764 f=3:gosub900
+769 goto790
+770 :
+771 rem deviated
+772 bb(ox,oy)=2:bb(px,py)=2
+773 f=2:gosub900
+774 pokebp+40*py+px,bs(bb(px,py))
+775 pokebc+40*oy+ox,dc
+776 pokebc+40*py+px,dc:dc=dc+1-(dc=0)
+779 goto790
+790 :
+791 rem result and stop effects
+792 pokebp+40*oy+ox,bs(bb(ox,oy))
+793 poke53280,4
+794 fori=1to30:next
+795 pokesi+4,fx(f,7)-1
+799 return
+
+800 :
+801 rem sub guess
+802 :
+805 g=g+1
+810 if bb(cx,cy)=5then840
+820 :
+821 rem bad guess
+825 f=5:gosub900
+830 pokebp+40*cy+cx,bs(0):pokebc+40*cy+cx,12
+835 goto880
+840 :
+841 rem good guess
+845 f=6:gosub900
+850 pokebp+40*cy+cx,bs(6):pokebc+40*cy+cx,10
+855 fori=1to3:poke55296+tp+l+i+hf*3,1:next
+860 hf=hf+1
+865 goto880
+880 :
+881 rem stop effects
+885 poke53280,4
+890 fori=1to30:next
+895 pokesi+4,fx(f,7)-1
+899 return
+
+900 :
+901 rem effects
+902 :
+910 iff=0then999
+920 poke53280,fx(f,0)
+930 pokesi+0,fx(f,1):pokesi+1,fx(f,2)
+940 pokesi+5,16*fx(f,3)+fx(f,4)
+950 pokesi+6,16*fx(f,5)+fx(f,6)
+960 pokesi+4,fx(f,7)
+999 return
+
+1000 :
+1001 rem sub init blackbox
+1002 :
+1010 rem blackbox array
+1020 l=8
+1030 dimbb(l+1,l+1)
+1050 :
+1060 rem blackbox screencodes "x dra@*"
+1070 fori=0to6:readbs(i):next
+1080 data 91,160,156,157,128,93,64
+1999 return
+
+2000 :
+2001 rem sub init effects
+2002 :
+2010 rem sid setup
+2020 si=54272:pokesi+24,15
+2030 dimfx(6,7):forn=2to6:fori=0to7:readfx(n,i):next:next
+2040 :
+2050 rem ray deviate
+2060 data 7,0,060,02,03,05,09,33
+2070 rem ray reflect
+2080 data 1,0,090,01,09,05,09,17
+2090 rem ray absorb
+2100 data 0,0,030,09,00,05,03,17
+2110 rem guess nothing
+2120 data 16,0,010,04,04,14,08,129
+2130 rem guess found
+2140 data 2,0,070,07,08,10,07,33
+2999 return
+
+3000 :
+3001 rem sub init graphics
+3002 :
+3010 rem update charset
+3020 fori=0to26:readx:poke828+i,x:nexti:data169,0,160,208,133,95,132,96
+3030 data169,0,160,224,133,90,132,91,169,0,160,64,133,88,132,89,76,191,163
+3040 i=56334:pokei,peek(i)and254:poke1,peek(1)and251:sys828
+3050 poke1,peek(1)or4:pokei,peek(i)or1
+3060 forn=1to8:readsc
+3070 fori=12288+sc*8to12288+sc*8+7:readbm:pokei,bm:nexti
+3080 nextn
+3090 poke53272,peek(53272)and240or12
+3100 :
+3101 rem character data
+3110 data00,54,127,127,127,62,28,8,0:rem heart
+3115 data27,24,24,102,102,24,24,60,0:rem club
+3120 data28,8,28,62,127,62,28,8,0:rem diamond
+3125 data29,8,28,62,127,127,28,62,0:rem spades
+3130 data30,0,24,60,126,255,0,0,0:rem up
+3135 data31,0,0,0,255,126,60,24,0:rem down
+3140 data60,8,24,56,120,120,56,24,8:rem left
+3145 data62,16,24,28,30,30,28,24,16:rem right
+3150 data39,0,0,0,24,24,0,0,0:rem mid-dot
+3200 :
+3210 rem extended color mode
+3220 poke53265,peek(53265)or64
+3230 poke53282,0:poke53283,1:poke53284,5
+3999 return
+
+5000 :
+5001 rem endings
+5100 :
+5101 rem win
+5110 printspc(9)"you found all"a"hearts"
+5120 printspc(15)"in"t"turns"
+5130 goto5900
+5200 :
+5201 rem lose
+5210 printspc(8)"game over after"t"turns"
+5220 printspc(8)"you found"hf"of"a"hearts"
+5230 goto5900
+5300 :
+5301 rem quit
+5310 printspc(11)"you quit in turn"t
+5320 printspc(9)"and found"hf"of"a"hearts"
+5330 goto5900
+5400 :
+5401 rem stop
+5410 printspc(17)"oh no"
+5420 printspc(7)"your heart stopped running"
+5430 goto5900
+5500 :
+5501 rem secretheart
+5510 printspc(19)chr$(18)chr$(28)"@"
+5520 printspc(4)chr$(5)"you found the introvert heart"
+5530 goto5900
+5900 :
+5901 rem again
+5910 print:printspc(7)"do you wish to play again?"
+5920 u$=""
+5930 getu$:ifu$=""then5930
+5940 ifu$="y"then120
+5950 ifu$="n"then6000
+5960 goto5930
+
+6000 :
+6001 rem quit
+6002 :
+6010 printchr$(147);
+6020 print"thank you for playing!"
+6030 poke788,49:clr:end
+
+7000 :
+7001 rem sub instructions
+7010 h$=chr$(28)+" @ @ @ "
+7020 printchr$(147)chr$(18)h$chr$(30)"  h e a r t  to  f i n d  "h$
+7030 printchr$(5)" the places where our hearts truly lie"
+7040 print" are not always obvious, and the path"
+7050 print" to them can be puzzling."
+7060 print" whether a message touches us deeply,"
+7070 print" glances off, or fails to reach us"
+7080 print" entirely also depends on how we"
+7090 print" relate to others in that moment.":print
+7100 print" send messages into the playing field"
+7110 print" and uncover the five hidden hearts.":print
+7120 print" these symbols will help you:":print
+7130 print"  [ there is no heart here."
+7140 print"  @ your message hit directly."
+7150 print"  ] your message was rejected."
+7160 print"  \ your message came close, but not"
+7170 print"    straight, so it was deviated.":print
+7180 print" the number of messages is limited."
+7190 print" however, finding a heart grants you"
+7200 print" additional messages. one introverted"
+7210 print" heart is hidden especially well...";
+7300 :
+7301 rem wait for key
+7310 u$=""
+7320 getu$:ifu$=""then7320
+7330 return
+
+8000 :
+8001 rem doc variables
+8002 :
+8010 rem a     # hearts
+8011 rem hf    # hearts found
+8012 rem b     blackbox cell content
+8013 rem bb()  blackbox content
+8014 rem bc    blackbox char ram addr
+8015 rem bp    blackbox color ram addr
+8016 rem bs()  blackbox screencodes
+8017 rem bx,by is in border x,y
+8019 rem cx,cy cursor x,y
+8020 rem cp    cursor display addr
+8021 rem d     direction 0/1-4
+8022 rem dc    deviation color
+8023 rem f     effect #
+8024 rem fx()  effect parameters
+8025 rem g     # guesses
+8026 rem i     loop index (generic)
+8027 rem l     length of blackbox
+8028 rem ox,oy ray position, origin
+8029 rem px,py ray position, current
+8030 rem r     ray bitmap
+8031 rem rf    # rays fired
+8032 rem rl    cell left ahead
+8033 rem rm    cell straight ahead
+8034 rem rr    cell right ahead
+8035 rem sx,sy ray x/y speed
+8036 rem t     turn #
+8037 rem ta    turns available
+8038 rem tp    turn display offset
+8039 rem u$,u  user key / asc() value
+8040 rem x,y   loop coordinates
+
+9000 :
+9001 rem doc ingame commands
+9002 :
+9010 rem cursor move u/d/l/r
+9020 rem return fire ray / guess
+9030 rem q quit
+
+9990 :
+9999 rem the world needs more love.
