@@ -1,0 +1,7 @@
+0 fOi=0to26:rEx:pO828+i,x:nEi:c=56334:pOc,pE(c)and254:pO1,pE(1)and251:sys828
+1 pO1,pE(1)or4:pOc,pE(c)or1
+2 fOa=12288to12520step8:pOa+1,pE(a):pOa,0:pOa+1025,pE(a+1024):pOa+1024,255:nEa
+3 fOa=12552to12792step8:pOa+1,pE(a):pOa,0:pOa+1025,pE(a+1024):pOa+1024,255:nEa
+4 pO53272,pE(53272)and240or12:dA169,0,160,208,133,95,132,96
+5 dA169,0,160,224,133,90,132,91,169,0,160,64,133,88,132,89,76,191,163
+9 ?chr$(147);:pO53280,6
