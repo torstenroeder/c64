@@ -14,6 +14,6 @@ officially released at [BBC #19](https://demozoo.org/parties/5155/)
 
 ![Atascify](atascify/atascify.png)
 
-This modifies the C64 PETSCII charset to an ATASCII like look.
+A <10-liner to modify the C64 PETSCII charset to an ATASCII like look.
 
 **Files:** [.d64 for Emulators](atascify/atascify.d64) | [.prg for Emulators](atascify/atascify.prg) | [.txt for copy/paste into VICE](atascify/atascify.txt)
