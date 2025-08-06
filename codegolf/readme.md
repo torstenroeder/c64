@@ -152,6 +152,14 @@ https://rosettacode.org/wiki/99_Bottles_of_Beer/Basic
 *contains all amateur levels with handicap and all novice levels with extra handicaps*
 *enthält alle Amateur-Level mit Handicap und alle Novice-Level mit Extra-Handicap*
 
+## Psychedelic Matrix Handicap
+
+*for all Challenges*
+*für alle Challenges*
+
+Store code and/or variables in the screen memory ($1024-$2023) or in the screen color memory ($55296-$56295).
+Lege Code und/oder Variablen im Bildschirmspeicher ($1024-$2023) oder im Bildschirmfarbspeicher ($55296-$56295) ab.
+
 ## Rule 30
 
 **Challenge:**
@@ -183,6 +191,14 @@ Write a program that displays itself on the screen after starting. The `LIST` co
 Schreibe ein Programm, das sich nach dem Start selbst auf dem Bildschirm ausgibt. Der Befehl `LIST` steht nicht zur Verfügung.
 → https://en.wikipedia.org/wiki/Quine_(computing)
 
+## Golf Ball Diver
+
+Golf balls are expensive, but are lost in large numbers. That's why there are golf ball divers. They fish golf balls out of the water that have been accidentally shot into rivers and lakes and then sell them back to golfers. Program a game that revolves around golf ball diving.
+
+→ https://www.golfguy.net/what-is-golf-ball-diver/  
+→ https://de.wikipedia.org/wiki/Golfballtaucher
+
+
 ## Wait a minute ⏲️
 
 **Challenge:**
@@ -196,11 +212,3 @@ Die Umgebungsvariablen `TI` und `TI$` stehen nicht zur Verfügung.
 **Eskalation:**
 Your program should have a runtime of exactly one year.
 Dein Programm soll genau ein Jahr Laufzeit haben.
-
-## Psychedelic Matrix Handicap 
-
-*for all Challenges*
-*für alle Challenges*
-
-Store code and/or variables in the screen memory ($1024-$2023) or in the screen color memory ($55296-$56295).
-Lege Code und/oder Variablen im Bildschirmspeicher ($1024-$2023) oder im Bildschirmfarbspeicher ($55296-$56295) ab.
