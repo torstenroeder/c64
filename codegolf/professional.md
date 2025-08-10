@@ -44,24 +44,23 @@ Write a program that displays itself on the screen after starting. The `LIST` co
 Schreibe ein Programm, das sich nach dem Start selbst auf dem Bildschirm ausgibt. Der Befehl `LIST` steht nicht zur Verfügung.
 → https://en.wikipedia.org/wiki/Quine_(computing)
 
+## Wait a minute
+
+**Challenge:**  
+Create a program that runs for exactly one minute.  
+Erstelle ein Programm, das genau eine Minute Laufzeit hat.
+
+**Handicap:**  
+The environment variables `TI` and `TI$` are not available.  
+Die Umgebungsvariablen `TI` und `TI$` stehen nicht zur Verfügung.
+
+**Eskalation:**  
+Your program should have a runtime of exactly one year.  
+Dein Programm soll genau ein Jahr Laufzeit haben.
+
 ## Golf Ball Diver
 
 Golf balls are expensive, but are lost in large numbers. That's why there are golf ball divers. They fish golf balls out of the water that have been accidentally shot into rivers and lakes and then sell them back to golfers. Program a game that revolves around golf ball diving.
 
 → https://www.golfguy.net/what-is-golf-ball-diver/  
 → https://de.wikipedia.org/wiki/Golfballtaucher
-
-
-## Wait a minute ⏲️
-
-**Challenge:**
-Create a program that runs for exactly one minute.  
-Erstelle ein Programm, das genau eine Minute Laufzeit hat.
-
-**Handicap:**
-The environment variables `TI` and `TI$` are not available.  
-Die Umgebungsvariablen `TI` und `TI$` stehen nicht zur Verfügung.
-
-**Eskalation:**
-Your program should have a runtime of exactly one year.  
-Dein Programm soll genau ein Jahr Laufzeit haben.
