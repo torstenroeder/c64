@@ -1,8 +1,15 @@
-## 99 Bottles of Beer 🍺
+## 99 Bottles of Beer
 
 **Challenge:**
 Display the lyrics to the song "99 Bottles of Beer".
 Gib die Lyrics zum Song “99 Bottles of Beer” aus (siehe http://www.99-bottles-of-beer.net/).
+
+**Soundtrack Challenge:**
+Your screen is broken. Create a true-to-syllable SID version.
+Erstelle eine silbengetreue(!!) SID-Version.
+https://www.youtube.com/watch?v=xCHYR3wRQLQ
+
+# 248 bytes
 
 ```basic
 0 B=99:W$=" ON THE WALL"
@@ -19,10 +26,6 @@ Gib die Lyrics zum Song “99 Bottles of Beer” aus (siehe http://www.99-bottle
 4?"go to the store and buy some more,":b=99:goS2:?w$"."
 ```
 
-**Soundtrack Challenge:**
-Your screen is broken. Create a true-to-syllable SID version.
-Erstelle eine silbengetreue(!!) SID-Version.
-https://www.youtube.com/watch?v=xCHYR3wRQLQ
+# 601 bytes (with some extras)
 
-**mehr Infos:**
-https://rosettacode.org/wiki/99_Bottles_of_Beer/Basic
+https://rosettacode.org/wiki/99_Bottles_of_Beer/Basic#Commodore_BASIC
