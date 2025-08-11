@@ -4,7 +4,7 @@
 
 Challenges and submissions for the C64 Code Golf on 7 July 2024 in Bonn, published in [Digital Talk 115](https://digitaltalk.at/) and in *Commodore 64. Past, Present, and Future of a Home Computer* (2025).
 
-[→ to the range](codegolf)
+[→ to the range](codegolf#readme)
 
 ## Heart 2 Find
 
