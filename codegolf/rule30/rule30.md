@@ -1,11 +1,16 @@
 # Rule 30
 
-**Challenge:**
-Create a one-dimensional cellular automaton with the rule 30 for the first 16 cycles.
-Erstelle einen eindimensionalen zellulären Automaten mit der [Regel 30](https://en.wikipedia.org/wiki/Rule_30) für die ersten 16 Zyklen.
+**Challenge:**  
+Create a one-dimensional cellular automaton with the "Rule 30" for the first 16 cycles.  
+Erstelle einen eindimensionalen zellulären Automaten mit der "Regel 30" für die ersten 16 Zyklen.
 
-##
+cf. https://en.wikipedia.org/wiki/Rule_30
 
+## 76 bytes / 1 line
+
+```
+0?"#",,"@":fOi=1043to1660:z=pE(i-1)+pE(i)/2+pE(i+1)/4:pOi+40,-(z<24orz>48)*32:nE
+```
 ```basic
 0 PRINT"{clr}",,"@"
 1 FOR I=1043 TO 1660
@@ -13,11 +18,8 @@ Erstelle einen eindimensionalen zellulären Automaten mit der [Regel 30](https:/
 3 POKE I+40,-(Z<24orZ>48)*32
 4 NEXT
 ```
-```
-0?"#",,"@":fOi=1043to1660:z=pE(i-1)+pE(i)/2+pE(i+1)/4:pOi+40,-(z<24orz>48)*32:nE
-```
 
-##
+## 131 bytes / 3 lines
 
 ```
 0?"#":pO1043,0:fori=0to15:a=1024+40*i:fOj=3to35:b=a+j
