@@ -1,4 +1,4 @@
-## C= is for Code
+# C= is for Code
 
 **Challenge:**  
 Write a program whose code looks like a Commodore logo (C=) and also displays one on the screen.  

@@ -8,7 +8,7 @@ Gib alle Zweierpotenzen von 2^0 bis 2^16 aus.
 Your code must not contain a power sign.  
 Dein Code darf kein Potenzierungszeichen enthalten.
 
-# 19 bytes (no handicap)
+# 19 bytes
 
 ```
 0fOi=0to16:?2^i:nE

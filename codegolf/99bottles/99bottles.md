@@ -1,4 +1,4 @@
-## 99 Bottles of Beer
+# 99 Bottles of Beer
 
 **Challenge:**  
 Display the lyrics to the song "99 Bottles of Beer".  
@@ -12,7 +12,7 @@ Erstelle eine silbengetreue(!!) SID-Version.
 
 cf. https://www.youtube.com/watch?v=xCHYR3wRQLQ
 
-# 248 bytes
+## 248 bytes
 
 ```
 0b=99:w$=" on the wall"
@@ -29,6 +29,6 @@ cf. https://www.youtube.com/watch?v=xCHYR3wRQLQ
 4 PRINT"GO TO THE STORE AND BUY SOME MORE,":B=99:GOSUB 2:PRINT W$"."
 ```
 
-# 601 bytes (with some extras)
+## 601 bytes (with some extras)
 
 https://rosettacode.org/wiki/99_Bottles_of_Beer/Basic#Commodore_BASIC
