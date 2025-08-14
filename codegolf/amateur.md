@@ -3,7 +3,7 @@
 *contains all Novice levels with handicap*  
 *enthält alle Novice-Level mit Handicap*
 
-## Fizz & Buzz
+## 9. Fizz & Buzz
 
 **Challenge:**
 Output the numbers from 1-100, but "Fizz" instead of the numbers divisible by 3, "Buzz" instead of the numbers divisible by 5, and "Fizzbuzz" instead of the numbers divisible by 3 and 5.  
@@ -26,7 +26,7 @@ Dein Code darf keine Funktionen enthalten.
 Your screen is broken. Create an acoustic version.  
 Dein Bildschirm ist kaputt. Erstelle eine akustische Version.
 
-## 99 Bottles of Beer 🍺
+## 10. 99 Bottles of Beer 🍺
 
 **Challenge:**
 Display the lyrics to the song "99 Bottles of Beer".  
