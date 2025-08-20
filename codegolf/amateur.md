@@ -26,7 +26,7 @@ Dein Code darf keine Funktionen enthalten.
 Your screen is broken. Create an acoustic version.  
 Dein Bildschirm ist kaputt. Erstelle eine akustische Version.
 
-## 10. 99 Bottles of Beer 🍺
+## 10. 99 Bottles
 
 **Challenge:**  
 Display the lyrics to the song "99 Bottles of Beer".  

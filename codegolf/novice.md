@@ -80,7 +80,7 @@ Dein Code darf keine `MID$()`-Funktion enthalten.
 Draw a wireframe cube with PETSCII graphics.  
 Zeichne mit PETSCII-Grafik einen Drahtgitter-Würfel auf den Bildschirm.
 
-## 8. C64 Rainbow Check
+## 8. Rainbow Check
 
 **Challenge:**  
 Output a flag with six horizontal stripes containing the primary and secondary colors of the color spectrum. The stripes should be one and a half times as long as the height of the flag.  

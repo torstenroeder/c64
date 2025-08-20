@@ -1,4 +1,4 @@
-# C64 Tenliner Code Golf
+# C64 Code Golf
 
 siehe Digital Talk 115 / C64 Buch
 
